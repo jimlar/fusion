@@ -499,6 +499,8 @@ void map_standard_pages (process_t *proc)
 
   //printf ("Mapping %u standard pages...", pages);
 
+  //MEMORY LARGER THAN 4MB NOT SUPPORTED, ALL PHYSICAL MEM NEEDS TO BE MAPPED
+
   if (dirs > 1)
     panic ("Kernel space bigger than 4MB not supported yet!");
 

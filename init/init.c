@@ -14,7 +14,7 @@
 #include <unistd.h>
 
 /* Set this to 1 for fork tests */
-#define TEST_FORKING  1
+#define NUM_FORKS  1
 
 static int test_var;
 
@@ -23,13 +23,11 @@ static int test_var;
  *
  */
 
-void do_child (char *mess)
-{
-  test_var = 1;
+void do_child (int num) {
+  //test_var = 1;
 
-  while (1)
-  {
-    printf (mess);
+  while (1) {
+    printf ("%u", num);
   }
 }
 
@@ -37,73 +35,20 @@ void do_child (char *mess)
  * Main of init
  */
 
-void init_main (void)
-{
+void init_main (void) {
+
+  int i = 0;
   //static char   *video_mem;
   //char           tmp;
 
-  test_var = 0;
+  //test_var = 0;
 
-  if (TEST_FORKING) {
-    printf ("forking... ");
-    switch (fork()) {
-    case 0:
-      do_child("1");
-      break;
-      
-    case -1:
-      printf ("Fork failed!\n");
-      while(1);
-    }
+  for (i = 0; i < NUM_FORKS; i++) {
     
-    printf ("forking... ");
+    printf ("fork(%u)", (i + 1));
     switch (fork()) {
     case 0:
-      do_child("2");
-      break;
-      
-    case -1:
-      printf ("Fork failed!\n");
-      while(1);
-    }
-    
-    printf ("forking... ");
-    switch (fork()) {
-    case 0:
-      do_child("3");
-      break;
-      
-    case -1:
-      printf ("Fork failed!\n");
-      while(1);
-    }
-
-    printf ("forking... ");
-    switch (fork()) {
-    case 0:
-      do_child("4");
-      break;
-      
-    case -1:
-      printf ("Fork failed!\n");
-      while(1);
-    }
-    
-    printf ("forking... ");
-    switch (fork()) {
-    case 0:
-      do_child("5");
-      break;
-      
-    case -1:
-      printf ("Fork failed!\n");
-      while(1);
-    }
-
-    printf ("forking... ");
-    switch (fork()) {
-    case 0:
-      do_child("6");
+      do_child(i);
       break;
       
     case -1:
@@ -113,8 +58,7 @@ void init_main (void)
   }
 
   /* We're parent */
-  while (1)
-  {
+  while (1) {
     printf ("p");
   }
 

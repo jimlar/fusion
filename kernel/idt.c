@@ -125,8 +125,8 @@ void init_idt (void)
    *
    */
 
+  //set_task_int_gate (__system_call_entry, SYSCALL_VECTOR, D_DPL3, system_call_tss, GDT_INT_START_INDEX + 32);
   set_int_gate (__system_call_entry, SYSCALL_VECTOR, D_DPL3);
-
 
   /* set the IDTR register */
   load_idtr();

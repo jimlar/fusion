@@ -246,7 +246,7 @@ void vm_setup_init_process (process_t         *init_proc,
 void do_fork_vm (process_t   *parent,
 		 process_t   *child)
 {
-  printf ("FORK_VM: forking memory tables\n");
+  //printf ("FORK_VM: forking memory tables\n");
 
   // Create a page directory
   if (create_page_dir (child))
@@ -254,12 +254,12 @@ void do_fork_vm (process_t   *parent,
     panic ("Cant setup page dir for new child!\n");
   }
 
-  printf ("FORK_VM: preparing copy on write\n");
+  //printf ("FORK_VM: preparing copy on write\n");
 
   //Setup pagetables
   prepare_copy_on_write (parent, child);
 
-  printf ("FORK_VM: setting mem-blocks\n");
+  //printf ("FORK_VM: setting mem-blocks\n");
 
   //Set the vm_blocks in proc table
   child->vm_code.vm_start = parent->vm_code.vm_start;
@@ -278,7 +278,7 @@ void do_fork_vm (process_t   *parent,
   child->vm_kernel_stack.vm_end = parent->vm_kernel_stack.vm_end;
   child->vm_kernel_stack.vm_flags = parent->vm_kernel_stack.vm_flags;
 
-  printf ("FORK_VM: done\n");
+  //printf ("FORK_VM: done\n");
 }
 
 /*

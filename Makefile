@@ -25,7 +25,7 @@ SYSTEM_OBJS = kernel/entry.o kernel/libkernel.a mm/libmm.a drv/libdrv.a
 SUBDIRS = kernel mm drv
 
 
-all:	dep system
+all:	dep system init/init.sys
 
 system:	$(SYSTEM_OBJS)
 	$(LD) $(LDFLAGS) -o system $(SYSTEM_OBJS)
@@ -50,12 +50,13 @@ drv/libdrv.a:
 kernel/entry.o:
 	(cd kernel; make entry;)
 
-
+init/init.sys:
+	(cd init; make)
 
 clean:
 	for i in $(SUBDIRS); do (cd $$i && make clean); done;
 	(cd boot;make clean; cd ..)
-	rm -f core system.elf system.bin *~ tmp_make system
+	rm -f core system.elf system.bin *~ tmp_make system init/init.sys
 
 dep:
 	for i in $(SUBDIRS); do (cd $$i && make dep); done;

@@ -47,6 +47,7 @@ process_t   *current_proc;
 
 int scheduler_irq (int irq)
 {
+  printf("S");
   schedule();
   return 0;
 }

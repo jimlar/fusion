@@ -396,12 +396,12 @@ void main (void)
    * Read and show boot logo
    *
    */
-  cur_file = fopen (BOOT_LOGO_FILE);
-  load_status = fread ((void *) BOOT_LOGO_LOAD_ADDR, -1, cur_file, 0);
-  pcx_draw_image ((void *) BOOT_LOGO_LOAD_ADDR, (void *) BOOT_LOGO_DECODE_ADDR, 0, 0);
+  //cur_file = fopen (BOOT_LOGO_FILE);
+  //load_status = fread ((void *) BOOT_LOGO_LOAD_ADDR, -1, cur_file, 0);
+  //pcx_draw_image ((void *) BOOT_LOGO_LOAD_ADDR, (void *) BOOT_LOGO_DECODE_ADDR, 0, 0);
 
-  //printf ("Loader32\n");
-  //printf ("---------------------------------------\n");
+  printf ("Loader32\n");
+  printf ("---------------------------------------\n");
 
   /*
    * now for the real work

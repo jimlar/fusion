@@ -110,6 +110,3 @@ void set_int_gate (void (*handler)(void), int int_no, int dpl);
 void set_task_int_gate (void (*handler)(void), int int_no, int dpl, tss_386_t  *tss, int  gdt_index);
 
 #endif
-
-
-

@@ -1,0 +1,20 @@
+#
+# Kernel call sequences for Fusion
+# (c) Jimmy Larsson 1998-2001
+#
+# $Id$
+#
+
+
+System startup
+==============
+
+System calls
+============
+
+fork()
+------
+
+Interrupt (IRQ)
+===============
+

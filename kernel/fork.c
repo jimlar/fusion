@@ -28,7 +28,7 @@ int do_fork (process_t *source)
   if (new_child == NULL)
     return -1;
 
-  printf ("FORK: copying tss and proc data\n");
+  //printf ("FORK: copying tss and proc data\n");
   
   //Copy misc data
   new_child->uid = source->uid;
@@ -65,7 +65,7 @@ int do_fork (process_t *source)
   new_child->tss.trace = source->tss.trace;
   new_child->tss.iomapbase = source->tss.iomapbase;
 
-  printf ("FORK: setting up mem-tables\n");
+  //printf ("FORK: setting up mem-tables\n");
 
   //Do mem part of fork
   do_fork_vm (source, new_child);
@@ -74,13 +74,13 @@ int do_fork (process_t *source)
   new_child->tss.eax = 0;
 
 
-  printf ("FORK: making child ready\n");
+  //printf ("FORK: making child ready\n");
 
   //Put it into run queue
   make_process_ready (new_child);
  
 
-  printf ("FORK: done\n");
+  //printf ("FORK: done\n");
 
   return new_child->pid;
 }

@@ -129,6 +129,8 @@ void start_initmodule (loaded_module_t   *init_mod)
 
   vga_set_wrapline();
 
+  //printf ("Starting init process...\n");
+  
   //START!!!
   sti();
 }
