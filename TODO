@@ -1,0 +1,111 @@
+#
+# TODO for Fusion
+# (c) Jimmy Larsson 1998-1999
+#
+
+
+ALL:
+* Need a floppy driver to be able to do filesystem, the easiest is
+  probably to do a simpler driver first, like the keyboard. To work
+  out driver details
+
+
+BOOT/LOADER32:
+* Use native filesystem
+
+KERNEL:
+* Extend process_t as needed
+* Drivers as processes or as kernel code?
+*
+* Processes are not swithcing to kernel mode correctly, they change TSS
+  should use same TSS and move to kernel mode with same address space. Makes
+  syscalls easier (passing strings in particular). 
+  See kernel/fork.c (copy_process) in linux 0.01.
+
+
+
+
+
+MM:
+* kmalloc needs work, does not return anything to system
+
+SYSCALLS:
+* Investigate reentrability
+* Start implementing syscalls, current status: 
+      (+=tested, *=exists, -=missing)
+
+   --- PROCESSESS ---
+	+ fork
+	- waitpid
+	- wait
+	- execve
+	- exit
+	- brk
+	- getpid
+	- getpgrp ???
+	- setsid ???
+	- ptrace
+	
+   --- SIGNALS ---
+	- sigaction
+	- sigreturn
+	- sigprocmask
+	- sigpending
+	- sigsuspend
+	- kill
+	- alarm
+	- pause
+
+   --- FS: FILES/INODES ---
+	- creat
+	- mknod
+	- open
+	- close	
+	- read
+	- write
+	- lseek
+	- stat
+	- fstat
+	- dup
+	- pipe
+	- ioctl
+	- access
+	- rename
+	- fcntl
+	- sync
+	- mount
+	- umount
+
+   --- FS: DIRECTORIES ---
+	- mkdir
+	- rmdir
+	- link
+	- unlink
+	- chdir
+	- chroot
+
+   --- PROTECTION ---
+	- chmod
+	- getuid
+	- getgid
+	- setuid
+	- setgid
+	- chown
+	* umask
+
+   --- TIME ---
+	- time
+	- stime
+	- utime
+	- times
+
+
+INTERRUPTS/EXCEPTIONS:
+* I suspect the stack handling is wicked and wrong
+  (What's the TSS fields for?)
+
+FS:
+* Construct ordinary inode filesystem
+* Add process_t stuff needed
+* Need a open files table
+* Block/Inode caches
