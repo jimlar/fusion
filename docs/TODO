@@ -2,7 +2,8 @@
 # TODO for Fusion
 # (c) Jimmy Larsson 1998-1999
 #
-
+# $Id$
+#
 
 ALL:
 * Need a floppy driver to be able to do filesystem, the easiest is

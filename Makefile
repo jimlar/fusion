@@ -62,7 +62,7 @@ dep:
 
 
 bochs:
-	(make clean;make;mount /mnt/hos.floppy;cp -f system /mnt/hos.floppy/system;umount /mnt/hos.floppy;bochs)
+	(make clean;make;mount /mnt/hos.floppy;cp -f system init/init.sys /mnt/hos.floppy/;umount /mnt/hos.floppy;bochs)
 
 
 
