@@ -530,7 +530,7 @@ int create_page_dir (process_t   *proc)
     return -1;
 
   ptr = (unsigned int *) (page_dir->page_frame_nr * PAGE_SIZE);
-  printf ("create_page_dir: Allocated new page directory at: 0x%x\n", page_dir->page_frame_nr * PAGE_SIZE);
+  //printf ("create_page_dir: Allocated new page directory at: 0x%x\n", page_dir->page_frame_nr * PAGE_SIZE);
 
   //
   // PAGE FAULT HERE!
@@ -540,7 +540,7 @@ int create_page_dir (process_t   *proc)
   for (i = 0; i < PAGE_SIZE/4; i++)
     ptr[i] = 0;
 
-  printf ("cleared!\n");
+  //printf ("cleared!\n");
 
   //Set CR3 to new page dir
   proc->tss.cr3 = page_dir->page_frame_nr * PAGE_SIZE;
